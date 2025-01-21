@@ -11,4 +11,9 @@ public class ViewController {
     public String getIndex() {
         return "index";
     }
+
+    @GetMapping("/product")
+    public String getProduct() {
+        return "product";
+    }
 }
