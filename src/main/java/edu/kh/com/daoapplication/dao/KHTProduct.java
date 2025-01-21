@@ -25,7 +25,6 @@ public class KHTProduct {
     @Column(nullable = false)
     private String description;
 
-
     @Column(nullable = false)
     private int stock;
 }
