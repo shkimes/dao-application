@@ -65,7 +65,7 @@ public class ApiController {
      * @param id  는    get('id' 로 가져온 값을 활용해서 ajax로 db에서 id값에 해당하는 데이터를 가져오기
      * @return
      */
-    @GetMapping("/api/user/{id}")
+    @GetMapping("/user/{id}")
     public KHTUser findById(@PathVariable("id") int id) {
         KHTUser khtUser = khtUserService.findById(id);
         log.info(khtUser.toString());
