@@ -33,4 +33,9 @@ public class ViewController {
     public String getUser(@RequestParam("id") int id) {
         return "userDetail";
     }
+
+    @GetMapping("/products/detail")
+    public String getProductDetail(@RequestParam("id") int id) {
+        return "productDetail";
+    }
 }

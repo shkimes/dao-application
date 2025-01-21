@@ -67,7 +67,7 @@ function getProductList() {
             productList.empty();
             $.each(data, function (index, product) {
                 productList.append(
-                    '<li>' + product.name + '</li>'
+                    `<li><a href="/products/detail?id=${productId}">  ${product.name} </a></li>`
                 )
             })
         },

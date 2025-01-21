@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface KHTProductRepository extends JpaRepository<KHTProduct, Long> {
+    KHTProduct findById(int id);
 }
