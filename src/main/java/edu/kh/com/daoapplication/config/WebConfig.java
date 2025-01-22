@@ -16,7 +16,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // resource 경로에 저장된 파일을 직접적으로 접근
-        registry.addResourceHandler("/images/**")
-                .addResourceLocations("file:"+uploadImg + "/");
+        registry.addResourceHandler("/images/**") // 외부에서 보여질 속임수 이미지 경로
+                .addResourceLocations("file:"+uploadImg + "/"); // 실제 저장되는    진짜 이미지 경로
+        // 여러 경로 설정 시   .addResourceLocations(); 내부에 , 로 구분
     }
 }
