@@ -38,4 +38,18 @@ public class ViewController {
     public String getProductDetail(@RequestParam("id") int id) {
         return "productDetail";
     }
+
+    @GetMapping("/books")
+    public String getBooks() {
+        return "books";
+    }
+    @GetMapping("/book") //id 조회
+    public String getBookById(@RequestParam("id") int id) {
+
+        return "bookDetail";
+    }
+    @GetMapping("/book/add")
+    public String saveBook() {
+        return "newBooks";
+    }
 }
