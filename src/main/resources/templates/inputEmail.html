@@ -22,9 +22,33 @@
             return;
         }
         $.ajax({
-            url:'api/sendCode',
+            url:'/api/sendCode',
             method:'POST',
+            contentType:'application/json', // 415 (Unsupported Media Type)
             data:JSON.stringify({email:email}),
+            success:function (data) {
+                alert(data);
+            },
+            error:function (error) {
+                alert(error);
+            }
+        })
+    })
+</script>
+
+<input id="codeInput" placeholder="인증번호 입력" type="text">
+<button id="checkCodeBtn">인증번호 확인</button>
+<script>
+    $("#checkCodeBtn").click(function () {
+        let email = $("#emailInput").val().toLowerCase();
+        let code = $("#codeInput").val();
+        console.log("email : " + email);
+        console.log("code : " + code);
+        $.ajax({
+            url:'/api/checkCode',
+            method:'POST',
+            contentType:'application/json',
+            data:JSON.stringify({email:email,code:code}),
             success:function (data) {
                 alert(data);
             },

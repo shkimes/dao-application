@@ -45,7 +45,9 @@ public class VerificationService {
 
     // 3. 보낸 이메일 & 인증코드 저장하는 메서드
     public void saveEmailCode(String email, String code) {
+        System.out.println("=== Service -  Save Email Code ===");
         verificationCodes.put(email.toLowerCase(), code);
+        System.out.println("Save Email Code : " + email.toLowerCase() + " -> " + code);
         // 보낸 이메일과 인증번호를 저장
         // 이메일은 소문자로 저장
     }
@@ -53,9 +55,16 @@ public class VerificationService {
     // 4. 이메일 모두 소문자로 통일하고, 이메일과 인증코드 일치여부 확인
     //  VerificationRequest = model.vo 에 만들어놓은 email code 저장하는 파일
     public boolean verifyCodeWithVO(VerificationRequest request) {
+        System.out.println("=== Service -  verifyCodeWithVO ===");
+
         String email = request.getEmail().toLowerCase(); //이메일 소문자로 가져오기
+        System.out.println("email : " + email);
+
         String inputCode = request.getCode(); // 이메일에서 인증번호를 확인한 사용자가 입력한 인증코드
+        System.out.println("inputCode : " + inputCode);
+
         String saveCode = verificationCodes.get(email);
+        System.out.println("saveCode : " + saveCode);
         // Java에서 랜덤으로 만든 숫자가 키-값 형식으로  vo 객체에 저장되어있음
         // verificationCodes 해당하는 이메일의 인증번호 가져오기
         return inputCode.equals(saveCode);
