@@ -20,4 +20,6 @@ public class KHTBook {
     private String author;
     @Column(nullable = false)
     private String genre;
+    @Column(nullable = true)
+    private  String imagePath; // 책 표지 이미지 경로 추가
 }
