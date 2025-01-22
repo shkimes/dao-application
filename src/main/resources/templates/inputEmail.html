@@ -12,6 +12,18 @@
 <input id="emailInput" name="email" placeholder="인증할 이메일 입력" type="text">
 <button id="sendCodeBtn">인증번호 보내기</button>
 <script>
+    // let isVerified = false;
+    // // 만약에 이메일을 변경해서 작성하면 인증확인한 상태 초기화
+    // $("#emailInput").on("input",function(){
+    //     // 인증번호 입력창 초기화 및 비활성화
+    //     $("#codeInput").val.prop("disabled",true);
+    //     // 인증번호 확인 버튼 비활성화
+    //     $("#checkCodeBtn").prop("disabled",false);
+    //     // 인증 상태 초기화
+    // })
+
+
+
     // 이메일로 인증번호 보내기 버튼을 클릭하면!!
     $("#sendCodeBtn").click(function () {
        // $("#emailInput").val(); //사용자가 작성한 이메일값 가져오기
@@ -28,6 +40,8 @@
             data:JSON.stringify({email:email}),
             success:function (data) {
                 alert(data);
+                $('#codeInput').prop('disabled',false) // 인증번호 입력창 활성화
+                $('#checkCodeBtn').prop('disabled',false) // 인증번호 확인버튼 활성화
             },
             error:function (error) {
                 alert(error);
@@ -36,8 +50,8 @@
     })
 </script>
 
-<input id="codeInput" placeholder="인증번호 입력" type="text">
-<button id="checkCodeBtn">인증번호 확인</button>
+<input id="codeInput" placeholder="인증번호 입력" type="text" disabled>
+<button id="checkCodeBtn" disabled>인증번호 확인</button>
 <script>
     $("#checkCodeBtn").click(function () {
         let email = $("#emailInput").val().toLowerCase();
@@ -51,6 +65,9 @@
             data:JSON.stringify({email:email,code:code}),
             success:function (data) {
                 alert(data);
+                $('#codeInput').prop('disabled',true) // 인증번호 입력창 비활성화
+                $('#checkCodeBtn').prop('disabled',true) // 인증번호 확인버튼 비활성화
+                isVerified = true; // 인증 완료된 상태
             },
             error:function (error) {
                 alert(error);
